@@ -18,7 +18,7 @@ if t and f:
     st.markdown(f'From ({f}) to ({t})')
     c = converter(f, t)
     st.markdown(c)
-    pyperclip.copy(c)
+    #pyperclip.copy(c)
 
 # if st.button("Convert"):
 #     st.markdown(f'From {f} to {t}')
