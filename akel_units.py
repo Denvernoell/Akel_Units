@@ -4,7 +4,7 @@ import pint
 u = pint.UnitRegistry()
 
 
-st.title('Akel Units')
+# st.title('Akel Units')
 
 
 def converter(f, t):
@@ -15,10 +15,10 @@ f = st.text_input('From')
 t = st.text_input('To')
 
 if t and f:
-    st.markdown(f'From ({f}) to ({t})')
     c = converter(f, t)
-    st.markdown(c)
-    #pyperclip.copy(c)
+    st.markdown(f'From ({f}) to ({t})\n{c}')
+    # st.markdown(c)
+    # pyperclip.copy(c)
 
 # if st.button("Convert"):
 #     st.markdown(f'From {f} to {t}')
