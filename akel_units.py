@@ -1,5 +1,5 @@
 import streamlit as st
-import pyperclip
+# import pyperclip
 import pint
 u = pint.UnitRegistry()
 
