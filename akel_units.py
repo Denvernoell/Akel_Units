@@ -8,23 +8,61 @@ u = pint.UnitRegistry()
 
 
 def converter(f, t):
-    return u(f).to(u(t)).magnitude
+    return f.to(t).magnitude
 
 
-f = st.text_input('From')
-t = st.text_input('To')
+f = u(st.text_input('From'))
+t = u(st.text_input('To'))
 
 if t and f:
-    c = converter(f, t)
-    # st.markdown(f'From ({f}) to ({t})\n\n{c}')
-    st.markdown(f'From ({u(f):P~}) to ({u(t):P~})\n\n{c}')
-    # st.markdown(c)
-    # pyperclip.copy(c)
+    if t.magnitude != 1:
+        st.error(f'"To" cannot have magnitude')
 
-# if st.button("Convert"):
-#     st.markdown(f'From {f} to {t}')
-#     c = converter(f, t)
-#     st.markdown(c)
-#     pyperclip.copy(c)
+    elif f.dimensionality != t.dimensionality:
+        st.error('Dimensionality mismatch')
+    else:
+        c = converter(f, t)
+        full = f'From ({f:P~}) to ({t:P~})\n\n{c}'
+        st.markdown(full)
 
-# st.markdown(pint.UnitRegistry())
+
+
+        st.components.v1.html('''
+<button class="button" onclick="myFunction()">Copy Conversion</button>
+
+
+<script>
+function myFunction() {
+navigator.clipboard.writeText("'''+ str(c) +'''");
+}
+</script>
+
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
+        ''')
+
+
+
