@@ -11,8 +11,8 @@ def converter(f, t):
     return f.to(t).magnitude
 
 
-f = u(st.text_input('From'))
-t = u(st.text_input('To'))
+f = u(st.text_input('From').lower())
+t = u(st.text_input('To').lower())
 
 if t and f:
     if t.magnitude != 1:
@@ -26,9 +26,6 @@ if t and f:
         full = f'From ({f:P}) to ({t:P})\n\n{c}'
         # fl = str(full)
         st.markdown(full)
-        
-
-
 
 
 #         st.components.v1.html('''
@@ -68,6 +65,3 @@ if t and f:
 # </style>
 
 #         ''')
-
-
-
