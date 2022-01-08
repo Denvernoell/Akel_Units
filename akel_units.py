@@ -22,18 +22,23 @@ if t and f:
         st.error('Dimensionality mismatch')
     else:
         c = converter(f, t)
-        full = f'From ({f:P~}) to ({t:P~})\n\n{c}'
+        # full = f'From ({f:P~}) to ({t:P~})\n\n{c}'
+        full = f'From ({f:P}) to ({t:P})\n\n{c}'
+        # fl = str(full)
         st.markdown(full)
+        
+
 
 
 
 #         st.components.v1.html('''
-# <button class="button" onclick="myFunction()">Copy Conversion</button>
+# <button class="button" onclick="myFunction('''+ str(c) +''')">Copy Magnitude</button>
+# <button class="button" onclick="myFunction('''+ str(fl) + ''')">Copy Conversion</button>
 
 
 # <script>
-# function myFunction() {
-# navigator.clipboard.writeText("'''+ str(c) +'''");
+# function myFunction(txt) {
+# navigator.clipboard.writeText(txt);
 # }
 # </script>
 
